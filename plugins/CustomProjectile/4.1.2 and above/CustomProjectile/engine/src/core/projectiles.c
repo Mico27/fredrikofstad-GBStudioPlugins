@@ -38,8 +38,8 @@ UBYTE projectile_phase;
 
 UBYTE projectile_flags;
 UBYTE projectile_launch_orbit;
-UBYTE projectile_delta_x;
-UBYTE projectile_delta_y;
+UWORD projectile_delta_x;
+UWORD projectile_delta_y;
 
 UBYTE projectile_hookshot_state;
 point16_t head_pos;

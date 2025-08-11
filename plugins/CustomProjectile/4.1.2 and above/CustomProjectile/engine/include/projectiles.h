@@ -38,8 +38,8 @@ extern UINT8 projectile_phase;
 
 extern UBYTE projectile_flags;
 extern UBYTE projectile_launch_orbit;
-extern UBYTE projectile_delta_x;
-extern UBYTE projectile_delta_y;
+extern UWORD projectile_delta_x;
+extern UWORD projectile_delta_y;
 
 extern UBYTE projectile_hookshot_state;
 

@@ -488,6 +488,8 @@ const compile = (input, helpers) => {
     getActorIndex,
     appendRaw,
     _compileSubScript,
+	getVariableAlias,
+	_setConstMemInt16,
   } = helpers;
   
   let flags = 0;
@@ -535,13 +537,13 @@ const compile = (input, helpers) => {
       break;
     case 1: // update variables
       flags |= UPDATE_VAR;
-      engineFieldSetToValue("projectile_delta_x", input.varX);
-      engineFieldSetToValue("projectile_delta_y", input.varY);
+	  _setConstMemInt16("projectile_delta_x", getVariableAlias(input.varX));
+      _setConstMemInt16("projectile_delta_y", getVariableAlias(input.varY));
       break;
     case 3: // a bit substandard?
       flags |= UPDATE_VAR;
-      engineFieldSetToValue("projectile_delta_x", input.varX);
-      engineFieldSetToValue("projectile_delta_y", input.varY);
+	  _setConstMemInt16("projectile_delta_x", getVariableAlias(input.varX));
+      _setConstMemInt16("projectile_delta_y", getVariableAlias(input.varY));
     case 2: // execute script
       const ref = _compileSubScript("projectile", input.script, "p_removal");
       const bank = `___bank_${ref}`;
@@ -588,8 +590,8 @@ const compile = (input, helpers) => {
       break;
 
     case type.custom:
-      engineFieldSetToValue("projectile_delta_x", input.customX);
-      engineFieldSetToValue("projectile_delta_y", input.customY);
+	  _setConstMemInt16("projectile_delta_x", getVariableAlias(input.customX));
+      _setConstMemInt16("projectile_delta_y", getVariableAlias(input.customY));
       break;
     
   }
